@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Qualificacoes</h3>
+<%= link_to 'Novo', new_qualificacao_path , class: "btn btn-outline-success btn-sm pull-right"%>
+<br>
+<br>
+
+<table class="table"> 
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Cliente</th>
+      <th>Restaurante</th> 
+      <th>Nota</th>
+      <th>Valor gasto</th>
+      <th class="text-center"> Ação</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @qualificacoes.each do |qualificacao| %>
+      <tr>
+        <td><%= qualificacao.id %></td>
+        <td><%= qualificacao.cliente.nome %></td>
+        <td><%= qualificacao.restaurante.nome %></td>
+        <td><%= qualificacao.nota %></td>
+        <%# <td><%= valor_formatado(@qualificacao.valor_gasto) %>
+        <td><%= qualificacao.valor_gasto %></td>
+        <td class="text-center">
+        <%= link_to 'Visualizar', qualificacao , class: "btn btn-outline-dark btn-sm" %>
+        <%= link_to 'Editar', edit_qualificacao_path(qualificacao) , class: "btn btn-outline-primary btn-sm"%>
+        <%= link_to 'Deletar', qualificacao, method: :delete, data: { confirm: 'Você deseja excluir ?' } , class: "btn btn-outline-danger btn-sm"%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @qualificacoes%>
+

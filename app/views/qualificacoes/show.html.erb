@@ -1,0 +1,53 @@
+<p id="notice">
+  <%= notice %>
+</p>
+<div class="card-body">
+  <h4>Mostrando Qualificação</h4>
+  <div class="border col-md-5">
+    <br>
+    <div class="row">
+      <div class="form-group col-md-5">
+        <strong>Cliente:</strong>
+        <input class="form-control" value="<%= @qualificacao.cliente.nome %> " disabled>
+      </div>
+
+      <div class="form-group col-md-7">
+        <strong>Restaurante:</strong>
+        <input class="form-control" value=" <%= @qualificacao.restaurante.nome %> " disabled>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="form-group col-md-5">
+        <strong>Nota</strong>
+        <input class="form-control" value="<%= @qualificacao.nota %>" disabled>
+      </div>
+
+      <div class="form-group col-md-7">
+        <strong>Valor gasto</strong>
+        <input class="form-control" value=" <%= valor_formatado(@qualificacao.valor_gasto) %> " disabled>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="form-group col-md-6">
+        <%= comentarios @qualificacao %>
+      </div>
+
+      <div class="form-group col-md-6">
+        <%= novo_comentario @qualificacao %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-6">
+        <%= link_to 'Voltar', qualificacoes_path , class: "btn btn-info"%>
+
+        <%= link_to 'Editar', edit_qualificacao_path(@qualificacao), class: "btn btn-success pull-right"  %> 
+      </div>
+    </div>
+
+  </div>
+</div>

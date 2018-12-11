@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Clientes</h3>
+<%= link_to 'Novo', new_cliente_path, class: "btn btn-outline-success btn-sm pull-right" %>
+<br>
+<br>
+<table class="table"> 
+    <tr>
+    <th>ID</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th class="text-center">Ação</th>
+    </tr>
+
+  <tbody>
+    <% @clientes.each do |cliente| %>
+      <tr>
+        <td><%= cliente.id %></td>
+        <td><%= cliente.nome %></td>
+        <td><%= cliente.idade %></td>
+        <td class="text-center">
+        <%= link_to 'Vizualizar', cliente , class: "btn btn-outline-dark btn-sm"%>
+        <%= link_to 'Editar', edit_cliente_path(cliente), class: "btn btn-outline-primary btn-sm" %>
+        <%= link_to 'Deletar', cliente, method: :delete, data: { confirm: 'Você deseja excluir ?' }, class: "btn btn-outline-danger btn-sm" %>
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @clientes %>
+

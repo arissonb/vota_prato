@@ -1,0 +1,36 @@
+<%= form_with(model: cliente, local: true) do |form| %>
+  <% if cliente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
+
+      <ul>
+      <% cliente.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row">
+    <div class="form-group col-md-12">
+    <%= form.label :nome %>
+    <%= form.text_field :nome , class: "form-control"%>
+  </div>
+</div>
+
+
+<div class="row">
+    <div class="form-group col-md-12">    
+    <%= form.label :idade %>
+    <%= form.number_field :idade, class: "form-control" %>
+  </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-6">
+        <%= link_to 'Voltar', clientes_path, class: "btn btn-info" %>
+
+        <%= form.submit :Criar, class: "btn btn-success pull-right"%>
+  </div>
+</div>
+<% end %>

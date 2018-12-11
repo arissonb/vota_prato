@@ -1,0 +1,66 @@
+<div class="card-body">
+    <h4>Mostrando Restaurante</h4>
+    <div class="border col-md-6">
+        <br>
+        <div class="form-group col-md-6">
+            <%= link_to "Qualificar este restaurante",new_qualificacao_path, class: "btn btn-primary"%>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <strong>Nome</strong>
+                <input class="form-control" value="<%= @restaurante.nome %>" disabled>
+
+            </div>
+            <div class="form-group col-md-6">
+                <strong>Endereço: </strong>
+                <input class="form-control" value="<%= @restaurante.endereco %>" disabled>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <strong>Especialidade </strong>
+                <input class="form-control" value="<%= @restaurante.especialidade %>" disabled>
+            </div>
+
+            <div class="form-group col-md-6">
+                <strong>Nota média </strong>
+                <input class="form-control" value=" <%= @restaurante.qualificacoes.average(:nota) %>" disabled>
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <strong>Qualificações </strong>
+                <input class="form-control" value="<%= @restaurante.qualificacoes.count %>" disabled>
+
+            </div>
+
+            <div class="form-group col-md-6">
+                <strong>Preço médio </strong>
+                <input class="form-control" value=" <%= @restaurante.qualificacoes.average(:valor_gasto) %>" disabled>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <%= comentarios @restaurante %>
+            </div>
+            <div class="form-group col-md-6">
+                <%= novo_comentario @restaurante %>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group col-md-5">
+                <%= image_tag @restaurante.foto.url(:thumb) %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 float-right">
+                <%= link_to 'Voltar', restaurantes_path, class: "btn btn-info" %>
+                <%= link_to 'Editar', edit_restaurante_path(@restaurante) ,class: "btn btn-success pull-right" %>
+            </div>
+        </div>
+    </div>
+</div>

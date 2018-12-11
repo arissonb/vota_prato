@@ -1,0 +1,60 @@
+<%= form_with(model: qualificacao, local: true) do |form| %>
+<% if qualificacao.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(qualificacao.errors.count, "error") %> prohibited this qualificacao from being saved:</h2>
+
+  <ul>
+    <% qualificacao.errors.full_messages.each do |message| %>
+    <li>
+      <%= message %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="row">
+
+  <div class="form-group col-md-4">
+    <% if @qualificacao.cliente %>
+    <%= form.hidden_field 'cliente_id' %>
+    <% else %>
+    <%= form.label :cliente_id %>
+
+    <%= collection_select(:qualificacao,:cliente_id,@cliente_list,:id,:nome, {}, { :class =>'select2 form-control'  }) %>
+
+    <% end %>
+  </div>
+
+
+  <div class="form-group col-md-8">
+    <% if @qualificacao.restaurante %>
+    <%= form.hidden_field 'restaurante_id' %>
+    <% else %>
+    <%= form.label :restaurante_id %>
+    <%= collection_select(:qualificacao,:restaurante_id,@restaurante_list,:id,:nome, {}, { :class =>'select2 form-control'  }) %>
+    <% end %>
+  </div>
+
+</div>
+
+
+<div class="row">
+  <div class="form-group col-md-5">
+    <%= form.label :nota %>
+    <%= form.text_field :nota, class: "form-control" %>
+  </div>
+
+  <div class="form-group col-md-7">
+    <%= form.label :valor_gasto %>
+    <%= form.text_field :valor_gasto, class: "form-control" %>
+  </div>
+</div>
+<div class="row">
+  <div class="form-group col-md-6">
+    <%= link_to 'Voltar', qualificacoes_path , class: "btn btn-info"%>
+    <%= form.submit :Criar, class: "btn btn-success pull-right"%>
+  </div>
+</div>
+<% end %>

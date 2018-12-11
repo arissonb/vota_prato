@@ -1,0 +1,29 @@
+<h3>Restaurantes</h3>
+<%= link_to 'Novo', new_restaurante_path , class: "btn btn-outline-success btn-sm pull-right"%>
+<br>
+<br>
+<table class="table"> 
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>Especialidade</th>
+        <th class="text-center">Ação</th>
+    </tr>
+    <% @restaurantes.each do |restaurante| %>
+    <tr>
+        <td> <%= restaurante.id  %> </td>
+        <td> <%= restaurante.nome %> </td>
+        <td> <%= restaurante.endereco %> </td>
+        <td> <%= restaurante.especialidade %> </td>
+        <td class="text-center">  
+            <%= link_to 'Visualizar',restaurante, class: "btn btn-outline-dark btn-sm" %> 
+            <%= link_to 'Editar', edit_restaurante_path(restaurante) , class: "btn btn-outline-primary btn-sm"%> 
+            <%= link_to 'Deletar', restaurante, method: :delete, data: { confirm: 'Você deseja excluir ?' }, class: "btn btn-outline-danger btn-sm" %>
+        </td>
+      
+    </tr>
+    <% end %>
+</table>
+<%= paginate @restaurantes%>
+

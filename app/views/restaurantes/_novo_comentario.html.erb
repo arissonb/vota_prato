@@ -1,0 +1,8 @@
+<%= form_for Comentario.new do |form| %>
+<%= form.hidden_field :comentavel_id, value: @restaurante.id %>
+<%= form.hidden_field :comentavel_type, value: @restaurante.class %>
+
+<%= form.label :conteudo %> <br />
+<%= form.text_area :conteudo%> 
+<%= form.submit :Criar, class: "btn btn-success" %>
+<% end %>

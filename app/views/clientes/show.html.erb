@@ -1,0 +1,34 @@
+<p id="notice">
+  <%= notice %>
+</p>
+<div class="card-body">
+  <h4>Mostrando Cliente</h4>
+  <div class="border col-md-3">
+    <br>
+    <div class="row">
+      <div class="form-group col-md-10">
+        <%= link_to "Nova qualificação", new_qualificacao_path,  class: "btn btn-primary pull-right" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-10">
+        <strong>Nome:</strong>
+        <input class="form-control" value="<%= @cliente.nome %>" disabled>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="form-group col-md-10">
+        <strong>Idade</strong>
+        <input class="form-control" value="<%= @cliente.idade %>" disabled>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-10">
+        <%= link_to 'Voltar', clientes_path, class: "btn btn-info" %>
+        <%= link_to 'Editar', edit_cliente_path(@cliente), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

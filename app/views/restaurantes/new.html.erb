@@ -1,0 +1,52 @@
+<%= form_for @restaurante , html: {multipart: true} do |form| %>
+
+<ul>
+    <% @restaurante.errors.full_messages.each do |msg| %>
+    <li>
+        <%= msg %>
+    </li>
+    <% end %>
+</ul>
+
+<div class="card-body">
+    <h3>Novo Restaurante</h3>
+    <div class="border col-md-5">
+        <br>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <%= form.label :nome %>
+                <%= form.text_field :nome , class: "form-control"%>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <%= form.label :endereco %>
+                <%= form.text_field :endereco , class: "form-control"%>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <%= form.label :especialidade %>
+                <%= form.text_field :especialidade , class: "form-control"%>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <%= form.file_field :foto %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <%= link_to 'Voltar', restaurantes_path, class: "btn btn-info" %>
+                <%= form.submit :Criar, class: "btn btn-success pull-right"%>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<% end %>

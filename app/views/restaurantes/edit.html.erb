@@ -1,0 +1,44 @@
+<%= form_for @restaurante do |form| %>
+
+<div class="card-body">
+<div class= "border col-md-6">
+
+<div class="row">
+    <div class="form-group col-md-10">
+        <%= form.label :nome %>
+        <%= form.text_field :nome , class: "form-control"%>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-10">
+         <%= form.label :endereco %>
+         <%= form.text_field :endereco , class: "form-control"%>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-10">
+         <%= form.label :especialidade %>
+         <%= form.text_field :especialidade , class: "form-control"%>
+    </div>
+</div>  
+
+<div class="row">  
+    <div class="form-group col-md-6">
+        <%= form.file_field :foto %>
+    </div>
+</div>    
+
+<div class="row">
+    <div class="form-group col-md-6">
+        <%= link_to 'Voltar', restaurantes_path, class: "btn btn-info" %>
+        <%= form.submit :Criar, class: "btn btn-success pull-right"%>
+    </div>
+</div>
+
+</div>
+</div>
+
+<% end %>
+

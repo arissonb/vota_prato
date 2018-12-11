@@ -1,0 +1,21 @@
+<%= form_for Comentario.new,remote: true do |form| %>
+<%= form.hidden_field :comentavel_id, value: comentavel.id %>
+<%= form.hidden_field :comentavel_type, value: comentavel.class %>
+<div class="row">
+    <div class="form-group col-md-9">
+        <%= form.label :conteudo %> <br />
+        <%= form.text_area :conteudo, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-2 my-lg-5">
+        <%= form.submit :Criar , class: "btn btn-outline-secondary "%>
+    </div>
+</div>
+<% end %>
+
+<% content_for :js do %>
+    $('form').bind('ajax:complete', function(xhr, result){
+        $('#comentarios').replaceWith(result.responseText);
+        $('textarea').val("");
+    });
+<% end %>
